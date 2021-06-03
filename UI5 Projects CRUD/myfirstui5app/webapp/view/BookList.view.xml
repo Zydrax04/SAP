@@ -1,0 +1,51 @@
+<mvc:View
+controllerName="Quickstart.controller.BookList"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:f="sap.ui.layout.form">
+   <f:SimpleForm id="createDetails" visible="true" editable="true" layout="ResponsiveGridLayout" adjustLabelSpan="false" emptySpanL="6" columnsL="1">
+      <f:content>
+         <Label text="ISBN" required="true" design="Bold"/>
+         <Input id="isbn" liveChange="onLiveChangeCreateISBN" />
+
+         <Label text="Author" required="true" design="Bold"/>
+         <Input id="author" liveChange="onLiveChangeCreateAuthor" />
+
+         <Label text="Title" required="true" design="Bold"/>
+         <Input id="title" liveChange="onLiveChangeCreateTitle"/>
+
+         <Label text="Language" required="true" design="Bold"/>
+         <Input id="language" liveChange="onLiveChangeCreateLanguage" />
+
+         <Label text="Date" required="true" design="Bold"/>
+         <DatePicker id="inputDatePublish" format="dd/MM/yyyy"/>
+
+         <Label text="Total Nr" required="true" design="Bold"/>
+         <Input id="total" liveChange="onLiveChangeCreateTotal" />
+
+         <Label text="Available Nr" required="true" design="Bold"/>
+         <Input id="available" liveChange="onLiveChangeCreateAvailable" />
+
+      </f:content>
+   </f:SimpleForm>
+   <SegmentedButton>
+      <buttons>
+         <Button text="Create" press=".onCreateBook"/>
+         <Button text="Update" press=".onUpdateBook"/>
+      </buttons>
+   </SegmentedButton>
+   <List mode="Delete"
+         delete="handleDelete"
+      headerText="{i18n>bookListTitle}"
+      class="sapUiResponsiveMargin"
+      width="auto"
+      items="{/BooksSet}" >
+      <items>
+         <ObjectListItem
+            title="ISBN: {BookId}, Title : {Title} , Author : '{Autor}', published: {publish_date}, lang: {langueage}, available_nr: {nr_available}, total_numbers: {total_number}"
+            id="idBooksList"
+            type="Navigation"
+            press="onPress"/>
+      </items>
+   </List>
+</mvc:View>
